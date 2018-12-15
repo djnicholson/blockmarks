@@ -1,13 +1,45 @@
 <div class="row align-items-center p-5 -only-when-signed-in -green-dark" style="display: none">
     <div class="col text-center">
+
         <h1 class="display-5 p-3">Your bookmarks&hellip;</h1>
-        <div class="row p-3 -bookmarks">
+        <div class="row p-3 pb-5 -bookmarks">
         </div>
+
+        <div class="container">
+            <div class="shadow-sm p-5 -green">
+                <h1 class="h3 p-2">Add a bookmark:</h1>
+                <form class="-add-form">
+                    <div class="row align-items-center">
+                        <div class="col-2 p-2 text-right">URL:</div>
+                        <div class="col-10 p-2">
+                            <input type="text" class="form-control -url" value="https://" />
+                        </div>
+                        <div class="col-2 p-2 text-right">Title:</div>
+                        <div class="col-10 p-2">
+                            <input type="text" class="form-control -title" />
+                        </div>
+                        <div class="col-2 p-2 text-right">Description:</div>
+                        <div class="col-10 p-2">
+                            <input type="text" class="form-control -description" placeholder="(Optional)" />
+                        </div>
+                        <div class="col-12 p-2 text-right">
+                            <button 
+                                type="button" 
+                                class="btn -pink" 
+                                onclick="blockmarks.bookmarks.add()">
+                                Add bookmark
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <script id="template-bookmark" type="text/x-template">
-    <div class="col-6 col-md-3 m-2 p-3 shadow -template-bookmark">
+    <div class="col-6 col-md-3 p-3 shadow -template-bookmark">
         <div>
             <a href="" class="-link"></a>
         </div>

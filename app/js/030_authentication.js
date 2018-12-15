@@ -2,6 +2,8 @@ blockmarks.authentication = (function(blockstack){
     
     // privates:
 
+    var currentUserState = { };
+
     var postHandlePendingSignIn = function (newUserData) {
         history.replaceState({}, document.title, "?");
         updateUiAccordingToAuthState();
@@ -29,6 +31,7 @@ blockmarks.authentication = (function(blockstack){
         // publics:
         
         initialize: function() {
+            currentUserState = { };
             if (blockstack.isSignInPending()) {
                 blockstack.handlePendingSignIn().then(postHandlePendingSignIn);
             } else {
@@ -41,12 +44,26 @@ blockmarks.authentication = (function(blockstack){
         },
 
         signIn: function() {
+            currentUserState = { };
             blockstack.redirectToSignIn();
         },
 
         signOut: function() {
             blockstack.signUserOut();
             updateUiAccordingToAuthState();
+            currentUserState = { };
+        },
+
+        state: function(key, value) {
+            if (!blockmarks.authentication.isSignedIn) {
+                return null;
+            } else {
+                if (value) {
+                    currentUserState[key] = value;
+                }
+
+                return currentUserState[key];
+            }
         },
 
     };
