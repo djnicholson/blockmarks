@@ -6,6 +6,7 @@ APPROOT=$ROOT/app
 BUILDROOT=$ROOT/build
 DEPLOYROOT=$ROOT/deploy
 
-echo Crunching JavaScript...
+echo -n Crunching JavaScript...
 cat $APPROOT/js/*.js > $BUILDROOT/all.js
 minify $BUILDROOT/all.js -o $DEPLOYROOT/all.js 
+echo Done

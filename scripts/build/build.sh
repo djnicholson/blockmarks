@@ -7,6 +7,6 @@ BUILDROOT=$ROOT/build
 DEPLOYROOT=$ROOT/deploy
 
 $DIR/html.sh
-$DIR/javascript.sh
 $DIR/css.sh
 $DIR/images.sh
+$DIR/javascript.sh
