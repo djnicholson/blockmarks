@@ -8,13 +8,15 @@ blockmarks.authentication = (function(blockstack){
     };
 
     var updateUiAccordingToAuthState = function() {
-        if (blockstack.isUserSignedIn()) {
+        if (blockmarks.authentication.isSignedIn()) {
             $(".-only-when-signed-in").show();
             $(".-only-when-signed-out").hide();
         } else {
             $(".-only-when-signed-in").hide();
             $(".-only-when-signed-out").show();
         }
+
+        blockmarks.bookmarks.initialize();
     };
 
     // initialization:
@@ -32,6 +34,10 @@ blockmarks.authentication = (function(blockstack){
             } else {
                 updateUiAccordingToAuthState();
             }
+        },
+
+        isSignedIn: function() {
+            return blockstack.isUserSignedIn();
         },
 
         signIn: function() {
