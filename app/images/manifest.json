@@ -1,9 +1,9 @@
 {
   "name": "clickbox",
-  "start_url": "localhost:5000",
-  "description": "A simple demo of Blockstack Auth",
+  "start_url": "https://clickbox.link/",
+  "description": "A bookmark manager",
   "icons": [{
-    "src": "https://helloblockstack.com/icon-192x192.png",
+    "src": "https://clickbox.link/logo-192x192.png",
     "sizes": "192x192",
     "type": "image/png"
   }]
