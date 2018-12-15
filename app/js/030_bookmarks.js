@@ -12,6 +12,14 @@ blockmarks.bookmarks = (function(){
 
     var rootElement = null; // set on initialization
 
+    var deleteBookmark = function(i) {
+        if (confirm("Are you sure?")) {
+            var bookmarks = blockmarks.authentication.state("bookmarks");
+            bookmarks[i] = undefined;
+            pushFileAndRender(bookmarks);
+        }
+    };
+
     var getFileAndRender = function() {
         var receiveFileContents = function(fileContents) {
             var bookmarks = JSON.parse(fileContents) || DEFAULT_BOOKMARKS;
@@ -20,7 +28,7 @@ blockmarks.bookmarks = (function(){
             for (var i = 0; i < bookmarks.length; i++) {
                 var bookmark = bookmarks[i];
                 if (bookmark) {
-                    renderBookmark(bookmark);
+                    renderBookmark(i, bookmark);
                 }
             }
         };
@@ -28,11 +36,15 @@ blockmarks.bookmarks = (function(){
         blockstack.getFile(FILE_NAME).then(receiveFileContents);
     };
 
-    var renderBookmark = function(bookmark) {
+    var pushFileAndRender = function(bookmarks) {
+        blockstack.putFile(FILE_NAME, JSON.stringify(bookmarks)).then(getFileAndRender);
+    };
+
+    var renderBookmark = function(i, bookmark) {
         var bookmarkElement = $($("#template-bookmark").html());
         bookmarkElement.find(".-link").text(bookmark[0]);
         bookmarkElement.find(".-link").prop("href", bookmark[1]);
-        console.log(bookmark);
+        bookmarkElement.find(".-delete-link").click(function(){ deleteBookmark(i); });
         if (bookmark[2]) {
             bookmarkElement.find(".-description").text(bookmark[2]);
         } else {
@@ -64,7 +76,7 @@ blockmarks.bookmarks = (function(){
                 var bookmarks = blockmarks.authentication.state("bookmarks");
                 if (bookmarks) {
                     bookmarks.push(newEntry);
-                    blockstack.putFile(FILE_NAME, JSON.stringify(bookmarks)).then(getFileAndRender);
+                    pushFileAndRender(bookmarks);
                 } else {
                     // TODO: Error for edge case (signed out)
                 }

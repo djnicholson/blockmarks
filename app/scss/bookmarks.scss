@@ -2,8 +2,12 @@
 
     background-color: $color-paper;
 
-    a {
+    .-link {
         font-size: 1.2em;
         font-weight: bold;
+    }
+
+    .-delete-link {
+        font-size: 0.8em;
     }
 }
