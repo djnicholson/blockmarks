@@ -3,7 +3,20 @@
         <img src="logo.png" alt="clickbox logo" />
     </div>
     <div class="col text-right">
-        <button type="button" class="btn -pink" onclick="blockstack.redirectToSignIn()">Sign in</button>
-        <button type="button" class="btn -pink" onclick="blockstack.signUserOut()">Sign out</button>
+        
+        <button 
+            type="button" 
+            class="btn -pink -only-when-signed-out" 
+            onclick="blockmarks.authentication.signIn()">
+            Sign in
+        </button>
+        
+        <button 
+            type="button" 
+            class="btn -pink -only-when-signed-in" 
+            onclick="blockmarks.authentication.signOut()">
+            Sign out
+        </button>
+
     </div>
 </div>

@@ -1,13 +1,8 @@
-blockmarks.onload = (function(blockstack){
+blockmarks.onload = (function(){
     
     // privates:
-    
-    var userData = null;
-
-    var receiveUserData = function (newUserData) {
-        userData = newUserData;
-        history.replaceState({}, document.title, "?");
-    };
+    // var foo = ...
+    // var bar = ...    
 
     // initialization:
     // (don't depend on other packages, order of package initialization is not guaranteed)
@@ -19,11 +14,11 @@ blockmarks.onload = (function(blockstack){
         // publics:
         
         go: function() {
-            if (blockstack.isSignInPending()) {
-                blockstack.handlePendingSignIn().then(receiveUserData);
-            }
+
+            blockmarks.authentication.initialize();
+            
         },
 
     };
 
-})(blockstack);
+})();
