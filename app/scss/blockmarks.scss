@@ -2,6 +2,10 @@ body {
     background-color: $color-brown;
 }
 
-.-main {
-    
+a {
+    color: $color-green-light;
+}
+
+a:hover {
+    color: $color-pink;
 }
