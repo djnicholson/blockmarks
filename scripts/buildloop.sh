@@ -18,7 +18,7 @@ do
     if [[ $chsum1 != $chsum2 ]] ; then      
         $DIR/build/html.sh
         $DIR/build/css.sh
-        $DIR/build/images.sh
+        $DIR/build/static.sh
         chsum1=$chsum2
     fi
     

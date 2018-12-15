@@ -8,5 +8,5 @@ DEPLOYROOT=$ROOT/deploy
 
 $DIR/html.sh
 $DIR/css.sh
-$DIR/images.sh
+$DIR/static.sh
 $DIR/javascript.sh

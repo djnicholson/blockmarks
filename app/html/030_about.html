@@ -2,19 +2,28 @@
     <div class="col text-center">
         <h1 class="display-3 p-5">A decentralized bookmark manager at your fingertips</h1>
         <h1 class="display-5 p-5">Your bookmarks &mdash; encrypted and decentralized</h1>
-        <div class="p-4">
-            <em>clickbox</em> is built on Blockstack and powered by the Bitcoin Blockchain.
-        </div>
-        <button 
-            type="button" 
-            class="btn -pink" 
-            onclick="blockmarks.authentication.signIn()">
-            Sign in with Blockstack
-        </button>
-        <div class="p-4">
-            Don't have a Blockstack account yet? No problem! 
-            <br />
-            <a onclick="blockmarks.authentication.signIn()" href="#">Create one here</a>
+        <div class="p-5">
+            <div class="h4">
+                <div class="p-3">
+                    <em>clickbox</em> is built on Blockstack and powered by the Bitcoin Blockchain.
+                </div>
+                <div class="p-3">
+                    <button 
+                        type="button" 
+                        class="btn p-3 -pink" 
+                        onclick="blockmarks.authentication.signIn()">
+                        Sign in with Blockstack
+                    </button>
+                </div>
+            </div>
+            <div class="h5 p-4">
+                <div class="p-1">
+                    Don't have a Blockstack account yet? No problem! 
+                </div>
+                <div class="p-1">
+                    <a onclick="blockmarks.authentication.signIn()" href="#">Create one here</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
