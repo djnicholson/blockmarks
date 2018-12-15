@@ -15,8 +15,16 @@ blockmarks.bookmarks = (function(){
     var deleteBookmark = function(i) {
         if (confirm("Are you sure?")) {
             var bookmarks = blockmarks.authentication.state("bookmarks");
-            bookmarks[i] = undefined;
-            pushFileAndRender(bookmarks);
+            if (bookmarks) {
+                bookmarks[i] && $(".-add-form .-title").val(bookmarks[i][0] || "");
+                bookmarks[i] && $(".-add-form .-url").val(bookmarks[i][1] || "https://");
+                bookmarks[i] && $(".-add-form .-description").val(bookmarks[i][2] || "");
+
+                bookmarks[i] = undefined;
+                pushFileAndRender(bookmarks);
+            } else {
+                // TODO: Error for edge case (signed out)
+            }
         }
     };
 
