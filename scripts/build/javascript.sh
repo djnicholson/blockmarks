@@ -8,4 +8,4 @@ DEPLOYROOT=$ROOT/deploy
 
 echo Crunching JavaScript...
 cat $APPROOT/js/*.js > $BUILDROOT/all.js
-cat $BUILDROOT/all.js | uglifyjs --compress --mangle > $DEPLOYROOT/all.js
+minify $BUILDROOT/all.js -o $DEPLOYROOT/all.js 
