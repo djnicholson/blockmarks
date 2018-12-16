@@ -1,4 +1,4 @@
-blockmarks.bookmarks = (function(){
+blockmarks.bookmarks = (function(blockstack){
     
     // privates:
     
@@ -10,15 +10,19 @@ blockmarks.bookmarks = (function(){
 
     var FILE_NAME = "bookmarks.json";
 
+    var FORM_FIELD_URL = ".-add-form .-url";
+    var FORM_FIELD_TITLE = ".-add-form .-title";
+    var FORM_FIELD_DESCRIPTION = ".-add-form .-description";
+
     var rootElement = null; // set on initialization
 
     var deleteBookmark = function(i) {
         if (confirm("Are you sure?")) {
             var bookmarks = blockmarks.authentication.state("bookmarks");
             if (bookmarks) {
-                bookmarks[i] && $(".-add-form .-title").val(bookmarks[i][0] || "");
-                bookmarks[i] && $(".-add-form .-url").val(bookmarks[i][1] || "https://");
-                bookmarks[i] && $(".-add-form .-description").val(bookmarks[i][2] || "");
+                bookmarks[i] && $(FORM_FIELD_TITLE).val(bookmarks[i][0] || "");
+                bookmarks[i] && $(FORM_FIELD_URL).val(bookmarks[i][1] || "https://");
+                bookmarks[i] && $(FORM_FIELD_DESCRIPTION).val(bookmarks[i][2] || "");
 
                 bookmarks[i] = undefined;
                 pushFileAndRender(bookmarks);
@@ -73,9 +77,9 @@ blockmarks.bookmarks = (function(){
         
         add: function() {
             var newEntry = [];
-            newEntry[1] = $(".-add-form .-url").val();
-            newEntry[0] = $(".-add-form .-title").val() || newEntry[1];
-            var description = $(".-add-form .-description").val();
+            newEntry[1] = $(FORM_FIELD_URL).val();
+            newEntry[0] = $(FORM_FIELD_TITLE).val() || newEntry[1];
+            var description = $(FORM_FIELD_DESCRIPTION).val();
             if (description) {
                 newEntry[2] = description;
             }
@@ -92,9 +96,9 @@ blockmarks.bookmarks = (function(){
                 // TODO: Show error (URL is required)
             }
             
-            $(".-add-form .-url").val("")
-            $(".-add-form .-title").val("")
-            $(".-add-form .-description").val("")
+            $(FORM_FIELD_URL).val("")
+            $(FORM_FIELD_TITLE).val("")
+            $(FORM_FIELD_DESCRIPTION).val("")
         },
 
         initialize: function() {
@@ -106,4 +110,4 @@ blockmarks.bookmarks = (function(){
 
     };
 
-})();
+})(blockstack);
