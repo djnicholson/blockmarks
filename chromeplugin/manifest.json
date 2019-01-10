@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "clickbox.link",
     "description": "A decentralized bookmark manager at your fingertips",
-    "version": "1",
+    "version": "0.0.0.1",
     "author": "Consensus Solutions LLC",
     "content_security_policy": "script-src 'self' https://clickbox.link; object-src 'self'",
     "externally_connectable": {
