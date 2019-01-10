@@ -8,4 +8,4 @@ DEPLOYROOT=$ROOT/deploy
 
 $DIR/build/build.sh
 
-http-server $DEPLOYROOT --cors -p 8000
+http-server $DEPLOYROOT --cors -p 9000
