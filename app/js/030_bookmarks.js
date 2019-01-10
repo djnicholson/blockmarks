@@ -62,10 +62,10 @@ blockmarks.bookmarks = (function(blockstack){
         var bookmarkElement = $($("#template-bookmark").html());
         bookmarkElement.find(".-link").text(bookmark[0]);
 
-        if (chromeExtensionId && chrome && chrome.runtime && chrome.runtime.sendMessage) {
+        if (blockmarks.plugin.isRunningInPlugin()) {
             bookmarkElement.find(".-link").prop("href", "#");
             bookmarkElement.find(".-link").click(function() {
-                chrome.runtime.sendMessage(chromeExtensionId, { goto: bookmark[1] });
+                chrome.runtime.sendMessage(blockmarks.plugin.chromeExtensionId(), { goto: bookmark[1] });
                 return false;
             });
         } else {
@@ -83,12 +83,6 @@ blockmarks.bookmarks = (function(blockstack){
     };
     
     rootElement = $(".-bookmarks");
-
-    var chromeExtensionId = undefined;
-    var fragment = window.location.hash;
-    if (fragment && (fragment.startsWith("#EXT_"))) {
-        chromeExtensionId = fragment.substring(5);
-    }
 
     return {
 

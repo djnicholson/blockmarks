@@ -45,6 +45,12 @@ blockmarks.authentication = (function(blockstack){
 
         signIn: function() {
             currentUserState = { };
+
+            if (blockmarks.plugin.isRunningInPlugin()) {
+                chrome.runtime.sendMessage(
+                    blockmarks.plugin.chromeExtensionId(), { goto: "https://clickbox.link" });
+            }
+
             blockstack.redirectToSignIn();
         },
 
