@@ -1,7 +1,5 @@
 blockmarks.bookmarks = (function(blockstack){
     
-    // privates:
-    
     var DEFAULT_BOOKMARKS = [
         ["clickbox", "https://clickbox.link/", "A decentralized bookmark manager"],
         ["App.co", "https://app.co/"],
@@ -63,7 +61,17 @@ blockmarks.bookmarks = (function(blockstack){
     var renderBookmark = function(i, bookmark) {
         var bookmarkElement = $($("#template-bookmark").html());
         bookmarkElement.find(".-link").text(bookmark[0]);
-        bookmarkElement.find(".-link").prop("href", bookmark[1]);
+
+        if (chromeExtensionId && chrome && chrome.runtime && chrome.runtime.sendMessage) {
+            bookmarkElement.find(".-link").prop("href", "#");
+            bookmarkElement.find(".-link").click(function() {
+                chrome.runtime.sendMessage(chromeExtensionId, { goto: bookmark[1] });
+                return false;
+            });
+        } else {
+            bookmarkElement.find(".-link").prop("href", bookmark[1]);    
+        }
+
         bookmarkElement.find(".-delete-link").click(function(){ deleteBookmark(i); });
         if (bookmark[2]) {
             bookmarkElement.find(".-description").text(bookmark[2]);
@@ -73,11 +81,14 @@ blockmarks.bookmarks = (function(blockstack){
 
         rootElement.append(bookmarkElement);
     };
-
-    // initialization:
-    // (don't depend on other packages, order of package initialization is not guaranteed)
     
     rootElement = $(".-bookmarks");
+
+    var chromeExtensionId = undefined;
+    var fragment = window.location.hash;
+    if (fragment && (fragment.startsWith("#EXT_"))) {
+        chromeExtensionId = fragment.substring(5);
+    }
 
     return {
 

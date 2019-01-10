@@ -7,8 +7,7 @@ CHROMEROOT=$ROOT/chromeplugin
 BUILDROOT=$ROOT/build
 DEPLOYROOT=$ROOT/deploy
 
-$DIR/html.sh
-$DIR/chromeplugin.sh
-$DIR/css.sh
-$DIR/static.sh
-$DIR/javascript.sh
+echo Packaging Chrome plugin...
+pushd $CHROMEROOT
+zip -r -u -o $DEPLOYROOT/chromeplugin.zip *
+popd
