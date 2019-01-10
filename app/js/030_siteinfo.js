@@ -15,7 +15,9 @@ blockmarks.siteinfo = (function(){
             $.getJSON('http://www.whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function(data) {
                 try {            
                     var html = $(parser.parseFromString(data.contents, 'text/html'));
-                    that.title = html.find("title").text();
+                    var titleElement = html.find("title")[0];
+                    that.title = "";
+                    titleElement && (that.title = $(titleElement).text());
                     that.description = html.find("meta[name=description]").attr("content");
                     that.state = STATE_SUCCEEDED;
                     resolve(that);

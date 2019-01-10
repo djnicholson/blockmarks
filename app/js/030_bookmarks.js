@@ -32,6 +32,14 @@ blockmarks.bookmarks = (function(blockstack){
         }
     };
 
+    var detectEnter = function(e) {
+        e = e || window.event;
+        var keyCode = e.keyCode || e.which;
+        if (keyCode == '13') {
+            blockmarks.bookmarks.add();
+        }
+    };
+
     var getFileAndRender = function() {
         var receiveFileContents = function(fileContents) {
             var bookmarks = JSON.parse(fileContents) || DEFAULT_BOOKMARKS;
@@ -103,6 +111,9 @@ blockmarks.bookmarks = (function(blockstack){
 
         initialize: function() {
             rootElement.empty();
+            $(FORM_FIELD_URL).keypress(detectEnter);
+            $(FORM_FIELD_TITLE).keypress(detectEnter);
+            $(FORM_FIELD_DESCRIPTION).keypress(detectEnter);
             if (blockmarks.authentication.isSignedIn()) {
                 getFileAndRender();
             }
