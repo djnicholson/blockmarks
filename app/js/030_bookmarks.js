@@ -77,7 +77,7 @@ blockmarks.bookmarks = (function(blockstack){
         
         add: function() {
             var newEntry = [];
-            newEntry[1] = $(FORM_FIELD_URL).val();
+            newEntry[1] = blockmarks.siteinfo.withProtocol($(FORM_FIELD_URL).val());
             newEntry[0] = $(FORM_FIELD_TITLE).val() || newEntry[1];
             var description = $(FORM_FIELD_DESCRIPTION).val();
             if (description) {
@@ -96,7 +96,7 @@ blockmarks.bookmarks = (function(blockstack){
                 // TODO: Show error (URL is required)
             }
             
-            $(FORM_FIELD_URL).val("")
+            $(FORM_FIELD_URL).val("https://")
             $(FORM_FIELD_TITLE).val("")
             $(FORM_FIELD_DESCRIPTION).val("")
         },

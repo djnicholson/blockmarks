@@ -16,6 +16,7 @@ blockmarks.onload = (function(){
         go: function() {
 
             blockmarks.authentication.initialize();
+            blockmarks.autofill.initialize();
             
         },
 
