@@ -18,8 +18,8 @@ blockmarks.autofill = (function(){
             lastLookup = currentInput;
             blockmarks.siteinfo.lookup(currentInput).ready.then(function(urlInfo) {
                 if (FORM_FIELD_URL.val() == currentInput) {
-                    urlInfo.title && FORM_FIELD_TITLE.val(urlInfo.title);
-                    urlInfo.description && FORM_FIELD_DESCRIPTION.val(urlInfo.description);
+                    urlInfo.title ? FORM_FIELD_TITLE.val(urlInfo.title) : FORM_FIELD_TITLE.val("");
+                    urlInfo.description ? FORM_FIELD_DESCRIPTION.val(urlInfo.description) : FORM_FIELD_DESCRIPTION.val("");
                 }
             });
         }
