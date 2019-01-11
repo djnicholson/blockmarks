@@ -12,7 +12,7 @@ blockmarks.siteinfo = (function(){
         this.description = undefined;
         var that = this;
         this.ready = new Promise(function(resolve, reject) {
-            $.getJSON('http://www.whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function(data) {
+            $.getJSON('https://d1824tlji0t9ja.cloudfront.net/get?url=' + encodeURIComponent(url) + '&callback=?', function(data) {
                 try {            
                     var html = $(parser.parseFromString(data.contents, 'text/html'));
                     var titleElement = html.find("title")[0];

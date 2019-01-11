@@ -28,13 +28,8 @@ blockmarks.autofill = (function(){
     return {
 
         initialize: function() {
-            //
-            // TODO: Find a way to make this work when the site is rendered over HTTPS
-            //       then reintroduce this functionality.
-            //
-            // setInterval(doLookup, POLLING_INTERVAL);
-            // FORM_FIELD_URL.blur(doLookup);
-            //
+            setInterval(doLookup, POLLING_INTERVAL);
+            FORM_FIELD_URL.blur(doLookup);
         },
 
     };
