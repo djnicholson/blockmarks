@@ -3,7 +3,7 @@ body {
 }
 
 a {
-    color: $color-pink;
+    color: $color-pink-sub;
 }
 
 a:hover {
@@ -12,4 +12,8 @@ a:hover {
 
 .-small {
     font-size: 0.9em;
+}
+
+button {
+    @extend .shadow;
 }
