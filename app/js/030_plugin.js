@@ -15,6 +15,7 @@ blockmarks.plugin = (function(){
         },
 
         isRunningInPlugin: function() {
+            var chrome = window.chrome;
             return chrome && chrome.runtime && chrome.runtime.sendMessage && chromeExtensionId;
         },
 
